@@ -32,20 +32,20 @@
 		const edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += "<"+t+">" + (msg[i] != ' ' ? msg[i] : "&nbsp;") + "</"+t+">" } };
 		const printnl = () => work.innerHTML += "<br/>";
 		const main = async () => {
-			await dprint(String.raw``);
+			await dprint(String.raw` `);
 			speed = 100;
-			await edprint(String.raw`Literographer demo`, "h1");
+			await edprint(String.raw`Literographer demo `, "h1");
 			printnl();
-			await edprint(String.raw`Test`, "h2");
+			await edprint(String.raw`Test `, "h2");
 			await sleep(1000);
 			printnl();
-			await dprint(String.raw`This is regular`);
+			await dprint(String.raw`This is regular `);
 			await sleep(1000);
 			printnl();
-			await edprint(String.raw`This is italic`, "i")
+			await edprint(String.raw`This is italic `, "i")
 			await sleep(1000);
 			printnl();
-			await edprint(String.raw`This is bold`, "b")
+			await edprint(String.raw`This is bold `, "b")
 		}
 	</script>
 </html>

@@ -123,8 +123,8 @@ void compile_src(const char *input, char **ret) {
             strcat(*ret, "\t\t\tawait edprint(String.raw`");
             *ret = realloc(*ret, strlen(buf)+strlen(*ret)-bp+1);
             strcat(*ret, buf+bp);
-            *ret = realloc(*ret, strlen(*ret)+strlen("`, \"h\");\n")+11);
-            strcat(*ret, "`, \"h%d\");\n");
+            *ret = realloc(*ret, strlen(*ret)+strlen(" `, \"h\");\n")+11);
+            strcat(*ret, " `, \"h%d\");\n");
             tmp = malloc(strlen(*ret)+1);
             strcpy(tmp, *ret);
             sprintf(*ret, tmp, bp);
@@ -134,19 +134,19 @@ void compile_src(const char *input, char **ret) {
             *ret = realloc(*ret, strlen(*ret)+strlen("\t\t\tprintnl();\n")+1);
             strcat(*ret, "\t\t\tprintnl();\n");
             if(buf[1]) {
-                *ret = realloc(*ret, strlen(*ret)+strlen("\t\t\tawait dprint(String.raw`")+strlen(buf)+strlen("`);\n"));
+                *ret = realloc(*ret, strlen(*ret)+strlen("\t\t\tawait dprint(String.raw`")+strlen(buf)+strlen("` );\n"));
                 strcat(*ret, "\t\t\tawait dprint(String.raw`");
                 strcat(*ret, buf+1);
-                strcat(*ret, "`);\n");
+                strcat(*ret, " `);\n");
             }
             break;
         case '#': break;
         case '\\':
             if(buf[1]) {
-                *ret = realloc(*ret, strlen(*ret)+strlen("\t\t\tawait dprint(String.raw`")+strlen(buf)+strlen("`);\n"));
+                *ret = realloc(*ret, strlen(*ret)+strlen("\t\t\tawait dprint(String.raw`")+strlen(buf)+strlen(" `);\n"));
                 strcat(*ret, "\t\t\tawait dprint(String.raw`");
                 strcat(*ret, buf+1);
-                strcat(*ret, "`);\n");
+                strcat(*ret, " `);\n");
             }
             break;
         case ']':
@@ -176,17 +176,17 @@ void compile_src(const char *input, char **ret) {
             strcat(*ret, "\t\t\tawait edprint(String.raw`");
             *ret = realloc(*ret, strlen(*ret)+strlen(buf + (bp - 'b' ? 1 : 2))+1);
             strcat(*ret, buf+(bp-'b'? 1 : 2));
-            *ret = realloc(*ret, strlen(*ret)+strlen("`, \"%c\")\n")+1);
-            strcat(*ret, "`, \"%c\")\n");
+            *ret = realloc(*ret, strlen(*ret)+strlen(" `, \"%c\")\n")+1);
+            strcat(*ret, " `, \"%c\")\n");
             tmp = malloc(strlen(*ret)+1);
             strcpy(tmp, *ret);
             sprintf(*ret, tmp, bp);
             break;
         default:
-            *ret = realloc(*ret, strlen(*ret)+strlen("\t\t\tawait dprint(String.raw`")+strlen(buf)+strlen("`);\n")+1);
+            *ret = realloc(*ret, strlen(*ret)+strlen("\t\t\tawait dprint(String.raw`")+strlen(buf)+strlen(" `);\n")+1);
             strcat(*ret, "\t\t\tawait dprint(String.raw`");
             strcat(*ret, buf);
-            strcat(*ret, "`);\n");
+            strcat(*ret, " `);\n");
             break;
         }
         free(buf);
