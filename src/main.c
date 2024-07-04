@@ -75,7 +75,7 @@ void compile_src(const char *input, char **ret) {
         "\t\tvar speed = 30;\n"
         "\t\tconst sleep = ms => new Promise(r => setInterval(r, ms));\n"
         "\t\tconst dprint = async msg => { for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += msg[i] } };\n"
-        "\t\tconst edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += \"<\"+t+\">\" + msg[i] + \"</\"+t+\">\" } };\n"
+        "\t\tconst edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += \"<\"+t+\">\" + (msg[i] != ' ' ? msg[i] : \"&nbsp\") + \"</\"+t+\">\" } };\n"
         "\t\tconst printnl = () => work.innerHTML += \"<br/>\";\n"
         "\t\tconst main = async () => {\n",
     *footer =

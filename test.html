@@ -13,7 +13,7 @@
 		    background-color: black;
 		    color: green;
 		    font-size: 1em;
-		    line-height: 1em;
+		    line-height: 0.5em;
 		}
 		h1 {
 		    font-size: 3em;
@@ -29,12 +29,12 @@
 		var speed = 30;
 		const sleep = ms => new Promise(r => setInterval(r, ms));
 		const dprint = async msg => { for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += msg[i] } };
-		const edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += "<"+t+">" + msg[i] + "</"+t+">" } };
+		const edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += "<"+t+">" + (msg[i] != ' ' ? msg[i] : "&nbsp") + "</"+t+">" } };
 		const printnl = () => work.innerHTML += "<br/>";
 		const main = async () => {
 			await dprint(String.raw``);
 			speed = 100;
-			await edprint(String.raw`Literographer`, "h1");
+			await edprint(String.raw`Literographer demo`, "h1");
 			printnl();
 			await edprint(String.raw`Test`, "h2");
 			await sleep(1000);
