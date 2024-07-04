@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<style>
+		h1{display: inline-block;}
+		h2{display: inline-block;}
+		h3{display: inline-block;}
+		h4{display: inline-block;}
+		h5{display: inline-block;}
+		h6{display: inline-block;}
+		
+		body {
+		    font-family: sans-serif;
+		    background-color: black;
+		    color: green;
+		    font-size: 1em;
+		    line-height: 1em;
+		}
+		h1 {
+		    font-size: 3em;
+		}
+		h2 {
+		    font-size: 2.5em;
+		}
+	</style>
+	<body id="work"></body>
+	<button onclick="{this.style.display='none'; main();}">Begin</button>
+	<script>
+		const work = document.getElementById("work");
+		var speed = 30;
+		const sleep = ms => new Promise(r => setInterval(r, ms));
+		const dprint = async msg => { for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += msg[i] } };
+		const edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += "<"+t+">" + msg[i] + "</"+t+">" } };
+		const printnl = () => work.innerHTML += "<br/>";
+		const main = async () => {
+			await dprint(String.raw``);
+			speed = 100;
+			await edprint(String.raw`Literographer`, "h1");
+			printnl();
+			await edprint(String.raw`Test`, "h2");
+			await sleep(1000);
+			printnl();
+			await dprint(String.raw`This is regular`);
+			await sleep(1000);
+			printnl();
+			await edprint(String.raw`This is italic`, "i")
+			await sleep(1000);
+			printnl();
+			await edprint(String.raw`This is bold`, "b")
+		}
+	</script>
+</html>

@@ -1,0 +1,27 @@
+%
+body {
+    font-family: sans-serif;
+    background-color: black;
+    color: green;
+    font-size: 1em;
+    line-height: 0.5em;
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2.5em;
+}
+%
+]speed 100
+!Literographer
+~
+!!Test
+]pause 1000
+~This is regular
+]pause 1000
+~
+*This is italic
+]pause 1000
+~
+**This is bold
