@@ -29,7 +29,7 @@
 		var speed = 30;
 		const sleep = ms => new Promise(r => setInterval(r, ms));
 		const dprint = async msg => { for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += msg[i] } };
-		const edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += "<"+t+">" + (msg[i] != ' ' ? msg[i] : "&nbsp") + "</"+t+">" } };
+		const edprint = async (msg, t) => {for(let i=0; i<msg.length; i++) {await sleep(speed); work.innerHTML += "<"+t+">" + (msg[i] != ' ' ? msg[i] : "&nbsp;") + "</"+t+">" } };
 		const printnl = () => work.innerHTML += "<br/>";
 		const main = async () => {
 			await dprint(String.raw``);
